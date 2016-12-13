@@ -10,14 +10,9 @@
     }, {
         "intent": "GetStepsOfRecipesIntent",
         "slots": [{
-            "name": "Item",
+            "name": "Recipe",
             "type": "LIST_OF_RECIPES"
         }]
-    }, {
-        "intent": "GetNextStepsOfRecipesIntent"
-    }, {
-        "intent": "GetPreviousStepsOfRecipesIntent"
-    }, {
-        "intent": "AMAZON.HelpIntent"
-    }]
+    }
+  ]
 }
