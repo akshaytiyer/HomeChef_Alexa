@@ -1,0 +1,13 @@
+{
+  "intents": [
+    {
+      "intent": "HelloWorldIntent"
+    },
+    {
+      "intent": "GetListOfIngredientsIntent"
+    },
+    {
+      "intent": "AMAZON.HelpIntent"
+    }
+  ]
+}

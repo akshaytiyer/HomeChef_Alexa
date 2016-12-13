@@ -1,0 +1,2 @@
+HelloWorldIntent say hello world
+GetListOfIngredientsIntent What are the ingredients
