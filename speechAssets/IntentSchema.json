@@ -1,13 +1,13 @@
 {
-  "intents": [
-    {
-      "intent": "HelloWorldIntent"
-    },
-    {
-      "intent": "GetListOfIngredientsIntent"
-    },
-    {
-      "intent": "AMAZON.HelpIntent"
-    }
-  ]
+    "intents": [{
+        "intent": "HelloWorldIntent"
+    }, {
+        "intent": "GetListOfIngredientsIntent",
+        "slots": [{
+            "name": "Item",
+            "type": "LIST_OF_RECIPES"
+        }]
+    }, {
+        "intent": "AMAZON.HelpIntent"
+    }]
 }
