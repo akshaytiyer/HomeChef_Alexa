@@ -8,6 +8,16 @@
             "type": "LIST_OF_RECIPES"
         }]
     }, {
+        "intent": "GetStepsOfRecipesIntent",
+        "slots": [{
+            "name": "Item",
+            "type": "LIST_OF_RECIPES"
+        }]
+    }, {
+        "intent": "GetNextStepsOfRecipesIntent"
+    }, {
+        "intent": "GetPreviousStepsOfRecipesIntent"
+    }, {
         "intent": "AMAZON.HelpIntent"
     }]
 }

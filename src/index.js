@@ -7,9 +7,29 @@ var HelloWorld = function() {
     AlexaSkill.call(this, APP_ID);
 };
 
-var recipes = {
+var ingredients = {
  "soda":"A snow golem can be created by placing a pumpkin on top of  two snow blocks on the ground.",
  "kanda poha":"Kanda Poha requires 2 cups poha/flattened rice/beaten rice, 2 tbsp oil, 1 tsp mustard seeds, 1 tbsp peanuts/groundnuts, 1 tbsp very finely chopped green chillies, 8-10 fresh curry leaves, 3 medium size finely chopped onions/kanda, salt - to taste."
+}
+
+var recipeteps = {
+   "kanda poha":[
+                "Take a pan/wok, into it, add oil and heat it.",
+                "Add mustard seeds and let them crackle.",
+                "Add peanuts and roast for few seconds.",
+                "Add finely chopped green chillies and saute.",
+                "Add curry leaves into it.",
+                "Add chopped onions and saute for few seconds.",
+                "Into it, add salt as per taste.",
+                "Add few sugar crystals and stir well(optional).",
+                "Add turmeric powder and mix well.",
+                "Add the washed poha into it.",
+                "Mix the poha well with the cooked onion mixture.",
+                "Add some freshly chopped coriander leaves into it.",
+                "Finally add in some lemon extracted juice all over, mix and cook for few seconds.",
+                "Switch off the flame.",
+                "Serve as a tea time snack."
+                ]
 }
 
 // Extend AlexaSkill
@@ -36,10 +56,13 @@ HelloWorld.prototype.eventHandlers.onSessionEnded = function(sessionEndedRequest
 };
 
 HelloWorld.prototype.intentHandlers = {
-    "HelloWorldIntent": function(intent, session, response) {
-      response.tellWithCard("Hello World!", "Hello World", "Hello World!");
-    },
     // register custom intent handlers
+    "HelloWorldIntent": function(intent, session, response) {
+      response.ask("Hello World", "Hello World");
+    },
+    "GetStepsOfRecipesIntent": function(intent, session, response) {
+      response.ask("Chup Be?", "Chup Be?");
+    },
     "GetListOfIngredientsIntent": function(intent, session, response) {
         var itemSlot = intent.slots.Item,
             itemName;
@@ -47,22 +70,22 @@ HelloWorld.prototype.intentHandlers = {
             itemName = itemSlot.value.toLowerCase();
         }
 
-        var cardTitle = "Recipe for " + itemName,
-            recipe = recipes[""+ itemName +""],
+        var cardTitle = "Ingredients for " + itemName,
+            ingredient = ingredients[""+ itemName +""],
             speechOutput,
             repromptOutput;
-        if (recipe) {
+        if (ingredient) {
             speechOutput = {
-                speech: recipe,
+                speech: ingredient,
                 type: AlexaSkill.speechOutputType.PLAIN_TEXT
             };
-            response.tellWithCard(speechOutput, cardTitle, recipe);
+            response.tellWithCard(speechOutput, cardTitle, ingredient);
         } else {
             var speech;
             if (itemName) {
-                speech = "I'm sorry, I currently do not know the recipe for " + recipes["Kanda Poha"] + itemName + ". What else can I help with?";
+                speech = "I'm sorry, I currently do not know the ingredients for " + ingredients[""+ itemName +""] + ". What else can I help with?";
             } else {
-                speech = "I'm sorry, I currently do not know that recipe. What else can I help with?";
+                speech = "I'm sorry, I currently do not know that ingredient. What else can I help with?";
             }
             speechOutput = {
                 speech: speech,
@@ -75,9 +98,7 @@ HelloWorld.prototype.intentHandlers = {
             response.ask(speechOutput, repromptOutput);
         }
     },
-    "AMAZON.HelpIntent": function(intent, session, response) {
-        response.ask("You can say hello to me!", "You can say hello to me!");
-    }
+
 };
 
 // Create the handler that responds to the Alexa Request.

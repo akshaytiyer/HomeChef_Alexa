@@ -1,2 +1,3 @@
 HelloWorldIntent say hello world
-GetListOfIngredientsIntent What are the ingredients
+GetListOfIngredientsIntent What are the ingredients for {Item}
+GetStepsOfRecipesIntent What are the recipe
